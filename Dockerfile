@@ -12,6 +12,8 @@ RUN gem install bundler:2.1.2
 ADD Gemfile* $APP_HOME/
 RUN bundle install
 
+EXPOSE ${PORT}
+
 ADD . $APP_HOME
 RUN yarn install --check-files
 # RUN RAILS_ENV=production bundle exec rake assets:precompile
