@@ -24,7 +24,13 @@ class SlackController < ApplicationControllerApi
           tap do
             env = ENV
             Object.send(:remove_const, :ENV)
-            break @binding.eval(text).inspect
+            result =
+              begin
+                @binding.eval(text)
+              rescue => e
+                e
+              end
+            break result.inspect
           ensure
             Object.const_set(:ENV, env)
           end
