@@ -22,10 +22,10 @@ class SlackController < ApplicationControllerApi
         msg =
           tap do
             env = ENV
-            Kernel.send(:remove_const, :ENV)
+            Object.send(:remove_const, :ENV)
             break @binding.eval(text).inspect
           ensure
-            Kernel.const_set(:ENV, env)
+            Object.const_set(:ENV, env)
           end
         post_slack(channel, msg)
         render plain: { ok: true }
@@ -38,6 +38,7 @@ class SlackController < ApplicationControllerApi
   end
 
   private def post_slack(channel, msg)
+    msg = msg[...1000]
     system(
       'curl', '-H', "Authorization: Bearer #{ENV['BOT_USER_OAUTH_ACCESS_TOKEN']}",
       '-d', "channel=#{ERB::Util.url_encode(channel)}&text=#{ERB::Util.url_encode(msg)}", 'https://slack.com/api/chat.postMessage',
