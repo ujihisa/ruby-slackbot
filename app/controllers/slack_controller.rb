@@ -36,7 +36,7 @@ class SlackController < ApplicationControllerApi
     end
   end
 
-  tap do
+  def post_slack(channel, msg)
     token = ENV['BOT_USER_OAUTH_ACCESS_TOKEN']
     Object.send(:remove_const, :ENV)
 
@@ -47,6 +47,7 @@ class SlackController < ApplicationControllerApi
         '-d', "channel=#{ERB::Util.url_encode(channel)}&text=#{ERB::Util.url_encode(msg)}", 'https://slack.com/api/chat.postMessage',
         exception: true)
     end
+    post_slack(channel, msg)
   end
 
   def poison_pill
