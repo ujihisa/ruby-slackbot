@@ -22,10 +22,10 @@ class SlackController < ApplicationControllerApi
         msg =
           tap do
             env = ENV
-            Module.send(:remove_const, :ENV)
+            Kernel.send(:remove_const, :ENV)
             msg = @binding.eval(text).inspect
           ensure
-          Module.const_set(:ENV, env)
+          Kernel.const_set(:ENV, env)
         end
         post_slack(channel, msg)
         render plain: { ok: true }
