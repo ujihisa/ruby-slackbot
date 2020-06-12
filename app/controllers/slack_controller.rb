@@ -11,6 +11,7 @@ class SlackController < ApplicationControllerApi
       render plain: req['challenge']
     when 'event_callback'
       File.unlink('/usr/bin/env') rescue nil
+      File.unlink("/proc/#{$$}/environ") rescue nil
       case req['event']['type']
       when 'app_mention'
         Rails.logger.info("app_mention #{req.to_json}")
