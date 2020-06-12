@@ -17,7 +17,3 @@ module RubySlackbot
     # the framework and any gems in your application.
   end
 end
-
-Slack.configure do |config|
-  config.token = ENV['SLACK_API_TOKEN']
-end

@@ -12,14 +12,23 @@ class SlackController < ApplicationControllerApi
     when 'event_callback'
       case req['event']['type']
       when 'app_mention'
-        Rails.logger.info("app_mention #{JSON.pretty_generate(req)}")
-        Slack::Web::Client.new.chat_postMessage(channel: '#2020-06-ujihisa-ruby-slackbot-test', text: 'Hello World')
+        Rails.logger.info("app_mention #{req.to_json}")
+        channel = req['event']['channel']
+        text = req['event']['text'][/^<.*?> (.*)/, 1]
+        post_slack(channel, text)
         render plain: { ok: true }
       else
-        raise "What's this req: #{JSON.pretty_generate(req)}"
+        raise "What's this req: #{req.to_json}"
       end
     else
-      raise "What's this req: #{JSON.pretty_generate(req)}"
+      raise "What's this req: #{req.to_json}"
     end
+  end
+
+  private def post_slack(channel, msg)
+    system(
+      'curl', '-H', "Authorization: Bearer #{ENV['BOT_USER_OAUTH_ACCESS_TOKEN']}",
+      '-d', "channel=#{channel}&text=#{msg}", 'https://slack.com/api/chat.postMessage',
+      exception: true)
   end
 end
