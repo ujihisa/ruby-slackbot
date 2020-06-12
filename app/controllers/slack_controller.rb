@@ -15,7 +15,14 @@ class SlackController < ApplicationControllerApi
         Rails.logger.info("app_mention #{req.to_json}")
         channel = req['event']['channel']
         text = req['event']['text'][/^<.*?> (.*)/, 1]
-        post_slack(channel, text)
+        @binding ||= binding()
+        tap do
+          (env, ENV) = [ENV, nil]
+          msg = @binding.eval(text)
+        ensure
+          ENV = env
+        end
+        post_slack(channel, msg)
         render plain: { ok: true }
       else
         raise "What's this req: #{req.to_json}"
