@@ -21,18 +21,10 @@ class SlackController < ApplicationControllerApi
         text = req['event']['text'][/^<.*?> (.*)/, 1].to_s
         @binding ||= binding()
         msg =
-          tap do
-            env = ENV
-            Object.send(:remove_const, :ENV)
-            result =
-              begin
-                @binding.eval(text)
-              rescue => e
-                e
-              end
-            break result.inspect
-          ensure
-            Object.const_set(:ENV, env)
+          begin
+            @binding.eval(text).inspect
+          rescue => e
+            e.inspect
           end
         post_slack(channel, msg)
         render plain: { ok: true }
@@ -44,12 +36,17 @@ class SlackController < ApplicationControllerApi
     end
   end
 
-  private def post_slack(channel, msg)
-    msg = msg[...1000]
-    system(
-      'curl', '-H', "Authorization: Bearer #{ENV['BOT_USER_OAUTH_ACCESS_TOKEN']}",
-      '-d', "channel=#{ERB::Util.url_encode(channel)}&text=#{ERB::Util.url_encode(msg)}", 'https://slack.com/api/chat.postMessage',
-      exception: true)
+  tap do
+    token = ENV['BOT_USER_OAUTH_ACCESS_TOKEN']
+    Object.send(:remove_const, :ENV)
+
+    define_method(:post_slack) do |channel, msg|
+      msg = msg[...1000]
+      system(
+        'curl', '-H', "Authorization: Bearer #{token}",
+        '-d', "channel=#{ERB::Util.url_encode(channel)}&text=#{ERB::Util.url_encode(msg)}", 'https://slack.com/api/chat.postMessage',
+        exception: true)
+    end
   end
 
   def poison_pill
