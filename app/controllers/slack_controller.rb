@@ -40,7 +40,7 @@ class SlackController < ApplicationControllerApi
     token = ENV['BOT_USER_OAUTH_ACCESS_TOKEN']
     Object.send(:remove_const, :ENV)
 
-    define_method(:post_slack) do |channel, msg|
+    self.class.define_method(:post_slack) do |channel, msg|
       msg = msg[...1000]
       system(
         'curl', '-H', "Authorization: Bearer #{token}",
