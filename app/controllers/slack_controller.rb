@@ -51,4 +51,12 @@ class SlackController < ApplicationControllerApi
       '-d', "channel=#{ERB::Util.url_encode(channel)}&text=#{ERB::Util.url_encode(msg)}", 'https://slack.com/api/chat.postMessage',
       exception: true)
   end
+
+  def poison_pill
+    Thread.start do
+      sleep 5
+      exit
+    end
+    render plain: "Ok, I'm going to die!"
+  end
 end
