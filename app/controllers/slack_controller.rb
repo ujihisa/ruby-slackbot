@@ -17,13 +17,15 @@ class SlackController < ApplicationControllerApi
         channel = req['event']['channel']
         raise "Invalid channel: #{channel}" unless allowed_channels.include?(channel)
 
-        text = req['event']['text'][/^<.*?> (.*)/, 1]
+        text = req['event']['text'][/^<.*?> (.*)/, 1].to_s
         @binding ||= binding()
-        tap do
-          (env, ENV) = [ENV, nil]
-          msg = @binding.eval(text)
-        ensure
-          ENV = env
+        msg =
+          tap do
+            env = ENV
+            Module.send(:remove_const, :ENV)
+            msg = @binding.eval(text).inspect
+          ensure
+          Module.const_set(:ENV, env)
         end
         post_slack(channel, msg)
         render plain: { ok: true }
