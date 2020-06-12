@@ -18,4 +18,5 @@ ADD . $APP_HOME
 RUN yarn install --check-files
 # RUN RAILS_ENV=production bundle exec rake assets:precompile
 RUN bundle exec rake assets:precompile
+RUN rm /usr/bin/env
 CMD ["rails","server","-b","0.0.0.0"]
