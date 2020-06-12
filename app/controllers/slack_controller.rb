@@ -12,7 +12,8 @@ class SlackController < ApplicationControllerApi
     when 'event_callback'
       case req['event']['type']
       when 'app_mention'
-        Rails.logger.info("app_mention #{JSON.pretty_generate(req)}"
+        Rails.logger.info("app_mention #{JSON.pretty_generate(req)}")
+        Slack::Web::Client.new.chat_postMessage(channel: '#2020-06-ujihisa-ruby-slackbot-test', text: 'Hello World')
         render plain: { ok: true }
       else
         raise "What's this req: #{JSON.pretty_generate(req)}"
