@@ -14,7 +14,7 @@ class SlackController < ApplicationControllerApi
       case req['event']['type']
       when 'app_mention'
         Rails.logger.info("app_mention #{req.to_json}")
-        allowed_channels = ['CPJDWPTJA', 'C015ZM53B40']
+        allowed_channels = ['CPJDWPTJA', 'C015ZM53B40'].freeze
         channel = req['event']['channel']
         raise "Invalid channel: #{channel}" unless allowed_channels.include?(channel)
 
