@@ -22,13 +22,16 @@ class SlackController < ApplicationControllerApi
         text = req['event']['text'][/^<.*?> (.*)/, 1].to_s
         text = CGI.unescapeHTML(text)
         @binding ||= binding()
-        msg =
+        result =
           begin
-            @binding.eval(text).inspect
+            result = @binding.eval(text)
+            @history ||= []
+            @history << text
+            result
           rescue => e
-            e.inspect
+            e
           end
-        post_slack(channel, msg)
+        post_slack(channel, result.inspect)
         render plain: { ok: true }
       else
         raise "What's this req: #{req.to_json}"
@@ -50,6 +53,10 @@ class SlackController < ApplicationControllerApi
         exception: true)
     end
     post_slack(channel, msg)
+  end
+
+  def history
+    render json: @history
   end
 
   def poison_pill
