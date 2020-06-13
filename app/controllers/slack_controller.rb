@@ -20,6 +20,7 @@ class SlackController < ApplicationControllerApi
         raise "Invalid channel: #{channel}" unless allowed_channels.include?(channel)
 
         text = req['event']['text'][/^<.*?> (.*)/, 1].to_s
+        text = CGI.unescapeHTML(text)
         @binding ||= binding()
         msg =
           begin
