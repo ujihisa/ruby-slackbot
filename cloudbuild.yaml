@@ -4,7 +4,7 @@ steps:
   args:
   - --destination=gcr.io/devs-sandbox/ruby-slackbot
   - --cache=true
-  - --cache-ttl=48h
+  # - --cache-ttl=48h # default 2 weeks
 # Push the container image to Container Registry
 # Deploy container image to Cloud Run
 - name: 'gcr.io/cloud-builders/gcloud'
