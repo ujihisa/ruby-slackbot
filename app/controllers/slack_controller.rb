@@ -4,7 +4,7 @@ end
 
 class SlackController < ApplicationControllerApi
   def api
-    req = JSON.parse(pp request.body.read)
+    req = JSON.parse(request.body.read)
 
     case req['type']
     when 'url_verification'
@@ -21,12 +21,12 @@ class SlackController < ApplicationControllerApi
 
         text = req['event']['text'][/^<.*?> (.*)/, 1].to_s
         text = CGI.unescapeHTML(text)
-        @binding ||= binding()
+        @@binding ||= binding()
         result =
           begin
-            result = @binding.eval(text)
-            @history ||= []
-            @history << text
+            result = @@binding.eval(text)
+            @@history ||= []
+            @@history << text
             result
           rescue => e
             e
@@ -48,7 +48,7 @@ class SlackController < ApplicationControllerApi
     self.class.define_method(:post_slack) do |channel, msg|
       msg = msg[...1000]
       system(
-        'curl', '-H', "Authorization: Bearer #{token}",
+        'curl', '-s', '-H', "Authorization: Bearer #{token}",
         '-d', "channel=#{ERB::Util.url_encode(channel)}&text=#{ERB::Util.url_encode(msg)}", 'https://slack.com/api/chat.postMessage',
         exception: true)
     end
@@ -56,7 +56,7 @@ class SlackController < ApplicationControllerApi
   end
 
   def history
-    render json: @history
+    render json: @@history
   end
 
   def poison_pill
