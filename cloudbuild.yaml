@@ -1,15 +1,15 @@
 steps:
 # Build the container image
-#- name: 'gcr.io/cloud-builders/docker'
-#  args: ['build', '-t', 'gcr.io/devs-sandbox/ruby-slackbot', '.']
-- name: 'gcr.io/kaniko-project/executor:latest'
-  args:
-  - --destination=gcr.io/devs-sandbox/ruby-slackbot
-  - --cache=true
-  - --cache-ttl=48h # default 2 weeks
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/devs-sandbox/ruby-slackbot', '.']
+# - name: 'gcr.io/kaniko-project/executor:latest'
+#   args:
+#   - --destination=gcr.io/devs-sandbox/ruby-slackbot
+#   - --cache=true
+#   - --cache-ttl=48h # default 2 weeks
 # Push the container image to Container Registry
-#- name: 'gcr.io/cloud-builders/docker'
-#  args: ['push', 'gcr.io/devs-sandbox/ruby-slackbot']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/devs-sandbox/ruby-slackbot']
 # Deploy container image to Cloud Run
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['run', 'deploy', 'ruby-slackbot', '--image', 'gcr.io/devs-sandbox/ruby-slackbot', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
