@@ -1,0 +1,8 @@
+version: '3'
+services:
+  ruby-slackbot:
+    build: .
+    ports:
+    - 8080
+    environment:
+    - PORT=8080
