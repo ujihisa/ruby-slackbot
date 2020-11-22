@@ -3,6 +3,11 @@ class ApplicationControllerApi < ActionController::API
 end
 
 class SlackController < ApplicationControllerApi
+  def initialize
+    super
+    @recent_processed_messages = Set.new
+  end
+
   def api
     req = JSON.parse(request.body.read)
 
@@ -18,6 +23,10 @@ class SlackController < ApplicationControllerApi
         allowed_channels = ['CPJDWPTJA', 'C015ZM53B40'].freeze
         channel = req['event']['channel']
         raise "Invalid channel: #{channel}" unless allowed_channels.include?(channel)
+
+        client_msg_id = req['event']['client_msg_id']
+        raise "Duplicated requests: #{client_msg_id}" if @recent_processed_messages.member?(client_msg_id)
+        @recent_processed_messages << client_msg_id
 
         text = req['event']['text'][/^<.*?> (.*)/, 1].to_s
         text = CGI.unescapeHTML(text)
