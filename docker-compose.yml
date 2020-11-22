@@ -1,11 +1,14 @@
 version: '3'
 services:
   ruby-slackbot:
+    container_name: ruby-slackbot
     build: .
     ports:
     - 3000
     environment:
     - PORT=3000
+    volumes:
+      - .:/app
     depends_on:
     - yaichi
   yaichi:
