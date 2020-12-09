@@ -1,5 +1,4 @@
-ARG RUBY_VERSION
-FROM ruby:${RUBY_VERSION}
+FROM ruby:3.0.0-preview1
 
 RUN \
       curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
@@ -11,7 +10,7 @@ RUN \
 
 ENV \
       APP_HOME=/app \
-      BUNDLE_PATH=/vendor/bundle/$RUBY_VERSION
+      BUNDLE_PATH=/vendor/bundle/3.0.0-preview1
 RUN \
       mkdir $APP_HOME && \
       mkdir -p $BUNDLE_PATH

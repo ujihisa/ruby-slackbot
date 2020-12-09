@@ -4,8 +4,6 @@ services:
     container_name: ruby-slackbot
     build:
       context: .
-      args:
-        RUBY_VERSION: 3.0.0-preview1
     ports:
     - 3000
     environment:
