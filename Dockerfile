@@ -1,4 +1,4 @@
-FROM ruby:3.0.0-preview1
+FROM ruby:3.0.0-preview2
 
 RUN \
       curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
@@ -10,7 +10,7 @@ RUN \
 
 ENV \
       APP_HOME=/app \
-      BUNDLE_PATH=/vendor/bundle/3.0.0-preview1
+      BUNDLE_PATH=/vendor/bundle/3.0.0-preview2
 RUN \
       mkdir $APP_HOME && \
       mkdir -p $BUNDLE_PATH
@@ -20,11 +20,12 @@ WORKDIR $APP_HOME
 RUN gem install bundler:2.1.4
 COPY Gemfile Gemfile.lock $APP_HOME/
 RUN bundle install --quiet
-COPY . $APP_HOME
+
+COPY package.json yarn.lock $APP_HOME/
+RUN yarn install --check-files --silent
 
 EXPOSE ${PORT}
 
-RUN yarn install --check-files --silent
 # RUN RAILS_ENV=production bundle exec rake assets:precompile # It's build time
 
 CMD ["bin/rails", "server", "-b", "0.0.0.0"]

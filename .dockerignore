@@ -1,3 +1,13 @@
+.git
+/.github
+/vendor/bundle
+/node_modules
+
+
+################################################################
+## Below is copied from .gitignore.
+## Always keep the below exactly same as .gitignore
+################################################################
 # Ignore bundler config.
 /.bundle
 

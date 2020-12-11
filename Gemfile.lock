@@ -209,6 +209,7 @@ PLATFORMS
   ruby
   x64-mingw32
   x86-mingw32
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
@@ -234,4 +235,4 @@ RUBY VERSION
    ruby 3.0.0p-1
 
 BUNDLED WITH
-   2.2.0.rc.1
+   2.2.0
