@@ -28,4 +28,6 @@ EXPOSE ${PORT}
 
 # RUN RAILS_ENV=production bundle exec rake assets:precompile # It's build time
 
+COPY . $APP_HOME/
+# ^ Because of Cloud Run
 CMD ["bin/rails", "server", "-b", "0.0.0.0"]
