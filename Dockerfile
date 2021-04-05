@@ -1,4 +1,4 @@
-FROM ruby:3.0.0
+FROM ruby:3.0.1
 
 RUN \
       curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
@@ -10,7 +10,7 @@ RUN \
 
 ENV \
       APP_HOME=/app \
-      BUNDLE_PATH=/vendor/bundle/3.0.0
+      BUNDLE_PATH=/vendor/bundle/3.0.1
 RUN \
       mkdir $APP_HOME && \
       mkdir -p $BUNDLE_PATH
