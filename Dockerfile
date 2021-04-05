@@ -1,12 +1,14 @@
-FROM ruby:3.0.1
+FROM rubylang/ruby:3.0
 
 RUN \
-      curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-      echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+      # curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+      # echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
       apt-get update -qq && \
-      apt-get install -y build-essential nodejs yarn && \
+      apt-get install -y curl libsqlite3-dev && \
+      apt-get install -y build-essential nodejs npm && \
       apt-get clean && \
-      rm -rf /var/lib/apt/lists/*
+      rm -rf /var/lib/apt/lists/* &&\
+      npm install --global yarn
 
 ENV \
       APP_HOME=/app \
