@@ -22,20 +22,24 @@ class SlackController < ActionController::API
         raise "Duplicated requests: #{client_msg_id}" if @recent_processed_messages.member?(client_msg_id)
         @recent_processed_messages << client_msg_id
 
-        text = req['event']['text'][/^<.*?> (.*)/, 1].to_s
-        text = CGI.unescapeHTML(text)
-        @@binding ||= binding()
-        result =
-          begin
-            result = @@binding.eval(text)
-            @@history ||= []
-            @@history << text
-            result
-          rescue => e
-            e
-          end
-        post_slack(channel, result.inspect)
-        render json: { ok: true, posted_to_slack: result }
+        case req['event']['text'][/^<.*?> (.*)/, 1]
+        in nil
+          render json: { ok: true }
+        in text
+          text = CGI.unescapeHTML(text.to_s)
+          @@binding ||= binding()
+          result =
+            begin
+              result = @@binding.eval(text)
+              @@history ||= []
+              @@history << text
+              result
+            rescue => e
+              e
+            end
+          post_slack(channel, result.inspect)
+          render json: { ok: true, posted_to_slack: result.inspect }
+        end
       else
         raise "What's this req: #{req.to_json}"
       end
