@@ -35,7 +35,7 @@ class SlackController < ActionController::API
             e
           end
         post_slack(channel, result.inspect)
-        render json: { ok: true }
+        render json: { ok: true, posted_to_slack: result }
       else
         raise "What's this req: #{req.to_json}"
       end
