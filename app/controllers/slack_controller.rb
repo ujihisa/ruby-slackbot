@@ -35,7 +35,7 @@ class SlackController < ActionController::API
             e
           end
         post_slack(channel, result.inspect)
-        render plain: { ok: true }
+        render json: { ok: true }
       else
         raise "What's this req: #{req.to_json}"
       end
@@ -49,10 +49,12 @@ class SlackController < ActionController::API
 
     self.class.define_method(:post_slack) do |channel, msg|
       msg = msg[...1000]
-      system(
-        'curl', '-s', '-H', "Authorization: Bearer #{token}",
-        '-d', "channel=#{ERB::Util.url_encode(channel)}&text=#{ERB::Util.url_encode(msg)}", 'https://slack.com/api/chat.postMessage',
-        exception: true)
+      unless Rails.env.test?
+        system(
+          'curl', '-s', '-H', "Authorization: Bearer #{token}",
+          '-d', "channel=#{ERB::Util.url_encode(channel)}&text=#{ERB::Util.url_encode(msg)}", 'https://slack.com/api/chat.postMessage',
+          exception: true)
+      end
     end
     post_slack(channel, msg)
   end
