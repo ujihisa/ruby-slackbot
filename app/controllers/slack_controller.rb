@@ -37,8 +37,15 @@ class SlackController < ActionController::API
             rescue => e
               e
             end
-          post_slack(channel, result.inspect)
-          render json: { ok: true, posted_to_slack: result.inspect }
+          formatted_result =
+            case result
+            when Exception
+              "#{e.message} (#{e.class})"
+            else
+              result.inspect
+            end
+          post_slack(channel, formatted_result)
+          render json: { ok: true, posted_to_slack: formatted_result }
         end
       else
         raise "What's this req: #{req.to_json}"

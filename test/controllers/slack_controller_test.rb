@@ -32,7 +32,9 @@ class SlackControllerTest < ActionDispatch::IntegrationTest
     [
       ['<@ruby> 1 + 2', '3'],
       ['<@ruby> "hello"', '"hello"'],
-      ['<@ruby> raise', 'RuntimeError'],
+      ['<@ruby> raise "boom"', 'boom (RuntimeError)'],
+      ['<@ruby> x = 123', '123'],
+      ['<@ruby> x + 1', '124'],
     ].each do |text, expected_result|
       post('/slack/api', headers: { 'CONTENT_TYPE' => 'application/json' }, params: {
         'token' => 'ZZZZZZWSxiZZZ2yIvs3peJ',
