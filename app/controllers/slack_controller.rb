@@ -1,8 +1,4 @@
-# Dirty hack
-class ApplicationControllerApi < ActionController::API
-end
-
-class SlackController < ApplicationControllerApi
+class SlackController < ActionController::API
   def initialize
     super
     @recent_processed_messages = Set.new
@@ -15,8 +11,6 @@ class SlackController < ApplicationControllerApi
     when 'url_verification'
       render plain: req['challenge']
     when 'event_callback'
-      File.unlink('/usr/bin/env') rescue nil
-      File.unlink("/proc/#{$$}/environ") rescue nil
       case req['event']['type']
       when 'app_mention'
         Rails.logger.info("app_mention #{req.to_json}")
@@ -52,7 +46,6 @@ class SlackController < ApplicationControllerApi
 
   def post_slack(channel, msg)
     token = ENV['BOT_USER_OAUTH_ACCESS_TOKEN']
-    Object.send(:remove_const, :ENV)
 
     self.class.define_method(:post_slack) do |channel, msg|
       msg = msg[...1000]
