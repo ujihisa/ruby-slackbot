@@ -159,6 +159,7 @@ GEM
     regexp_parser (2.1.1)
     request_store (1.5.0)
       rack (>= 1.4)
+    rexml (3.2.5)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -231,6 +232,7 @@ DEPENDENCIES
   lograge
   puma (~> 4.1)
   rails (>= 6)
+  rexml
   sass-rails (>= 6)
   selenium-webdriver
   spring
