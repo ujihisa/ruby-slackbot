@@ -19,7 +19,7 @@ RUN \
 
 WORKDIR $APP_HOME
 
-RUN gem install bundler:2.1.4
+RUN gem install bundler:2.2.16
 COPY Gemfile Gemfile.lock $APP_HOME/
 RUN bundle install --quiet
 
