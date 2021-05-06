@@ -1,2 +1,38 @@
-<h1>Home#index</h1>
-<p>Hello! Powered by ruby <%= RUBY_VERSION %></p>
+<div class="container">
+  <h1>Home#index</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">GitHub</th>
+        <td><%= link_to(*['https://github.com/ujihisa/ruby-slackbot']*2) %></td>
+      </tr>
+      <tr>
+        <th scope="row">RUBY_DESCRIPTION</th>
+        <td>
+          <code><%= RUBY_DESCRIPTION %></code>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">ruby-slackbot git commit sha1</th>
+        <td>
+          TODO
+          <code><%= nil %></code>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">App started at</th>
+        <td>
+          <%= RubySlackbot::Application::APP_STARTED_AT.in_time_zone('America/Vancouver') %>
+          <%= '(%s ago)' % [time_ago_in_words(RubySlackbot::Application::APP_STARTED_AT)] %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
