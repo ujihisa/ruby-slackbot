@@ -28,8 +28,7 @@ RUN yarn install --check-files --silent
 
 EXPOSE ${PORT}
 
-# RUN RAILS_ENV=production bundle exec rake assets:precompile # It's build time
-
 COPY . $APP_HOME/
-# ^ Because of Cloud Run
+RUN env SECRET_KEY_BASE=`bin/rake secret` bin/rake assets:precompile
+
 CMD ["bin/rails", "server", "-b", "0.0.0.0"]
