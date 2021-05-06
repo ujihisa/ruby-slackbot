@@ -29,6 +29,7 @@ class SlackController < ActionController::API
   def initialize
     super
     @recent_processed_messages = Set.new
+    @@history ||= []
   end
 
   def api
