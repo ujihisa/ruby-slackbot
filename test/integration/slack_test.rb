@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class SlackTest < ActionDispatch::IntegrationTest
-  test "the truth" do
+  test 'history grows' do
     get '/slack/history'
     assert_equal([], JSON.parse(response.body))
 
