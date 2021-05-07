@@ -28,7 +28,15 @@ RUN yarn install --check-files --silent
 
 EXPOSE ${PORT}
 
-COPY . $APP_HOME/
+COPY bin/ bin/
+COPY lib/ lib/
+COPY *.js Rakefile ./
+COPY config/ config/
+COPY app/assets/ app/assets/
+COPY app/javascript/ app/javascript/
 RUN env SECRET_KEY_BASE=`bin/rake secret` bin/rake assets:precompile
+
+COPY . $APP_HOME/
+RUN echo "$(git rev-parse --short HEAD)" > ./VERSION
 
 CMD ["bin/rails", "server", "-b", "0.0.0.0"]
