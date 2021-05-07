@@ -41,12 +41,12 @@ class SlackController < ActionController::API
               @@history << text
               result
             rescue Exception => e
-              "ERROR: #{text.inspect} failed to evaluate.\n```#{e.class}: #{e.message}\n#{e.backtrace.join("\n")}```"
+              e
             end
           formatted_result =
             case result
             when Exception
-              "#{e.message} (#{e.class})"
+              "ERROR: #{text.inspect} failed to evaluate.\n```#{e.class}: #{e.message}\n#{e.backtrace.join("\n")}```"
             else
               result.inspect
             end
