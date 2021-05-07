@@ -1,8 +1,0 @@
-steps:
-- name: 'gcr.io/kaniko-project/executor:latest'
-  args:
-  - --destination=gcr.io/devs-sandbox/ruby-slackbot
-  - --cache=true
-  - --cache-ttl=48h # default 2 weeks
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['run', 'deploy', 'ruby-slackbot', '--image', 'gcr.io/devs-sandbox/ruby-slackbot', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
