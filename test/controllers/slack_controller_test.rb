@@ -32,7 +32,7 @@ class SlackControllerTest < ActionDispatch::IntegrationTest
     [
       ['<@ruby> 1 + 2', '3'],
       ['<@ruby> "hello"', '"hello"'],
-      ['<@ruby> raise "boom"', 'boom (RuntimeError)'],
+      ['<@ruby> raise "boom"', /RuntimeError: boom/],
       ['<@ruby> x = 123', '123'],
       ['<@ruby> x + 1', '124'],
     ].each do |text, expected_result|
@@ -57,7 +57,12 @@ class SlackControllerTest < ActionDispatch::IntegrationTest
       }.to_json)
 
       response_json = JSON.parse(response.body)
-      assert_equal(expected_result, response_json['posted_to_slack'])
+      case expected_result
+      when Regexp
+        assert_match(expected_result, response_json['posted_to_slack'])
+      else
+        assert_equal(expected_result, response_json['posted_to_slack'])
+      end
     end
   end
 end
