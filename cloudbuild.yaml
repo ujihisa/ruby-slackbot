@@ -1,9 +1,0 @@
-steps:
-- name: 'gcr.io/kaniko-project/executor:latest'
-  args:
-  - --destination=gcr.io/$PROJECT_ID/$REPO_NAME:latest
-  - --cache=true
-  - --cache-ttl=48h # default 2 weeks
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
-  args: ['gcloud', 'run', 'services', 'update', 'ruby-slackbot', '--platform=managed', '--image=gcr.io/$PROJECT_ID/$REPO_NAME:latest', '--region=us-central1', '--quiet']
-
