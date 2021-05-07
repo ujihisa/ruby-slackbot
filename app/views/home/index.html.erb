@@ -22,7 +22,7 @@
       <tr>
         <th scope="row">ruby-slackbot git commit sha1</th>
         <td>
-          <code><%= File.read('VERSION') %></code>
+          <code><%= File.read('VERSION') if File.exist?('VERSION') %></code>
         </td>
       </tr>
       <tr>

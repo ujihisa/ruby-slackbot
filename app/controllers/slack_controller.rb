@@ -33,12 +33,10 @@ class SlackController < ActionController::API
   end
 
   def api
-    # Directly from slack
-    # req = JSON.parse(request.body.read)
-
-    # Via Pub/Sub
     req = JSON.parse(request.body.read)
-    req = JSON.parse(Base64.decode64(req.dig('message', 'data')))
+    if !req['type'] # via pub/sub
+      req = JSON.parse(Base64.decode64(req.dig('message', 'data')))
+    end
 
     case req['type']
     when 'url_verification'

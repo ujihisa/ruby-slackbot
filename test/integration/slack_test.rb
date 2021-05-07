@@ -3,7 +3,7 @@ require 'test_helper'
 class SlackTest < ActionDispatch::IntegrationTest
   test 'history grows' do
     get '/slack/history'
-    assert_equal([], JSON.parse(response.body))
+    current_history = JSON.parse(response.body)
 
     post('/slack/api', headers: { 'CONTENT_TYPE' => 'application/json' }, params: {
       'token' => 'ZZZZZZWSxiZZZ2yIvs3peJ',
@@ -27,6 +27,6 @@ class SlackTest < ActionDispatch::IntegrationTest
     assert_equal('3', JSON.parse(response.body)['posted_to_slack'])
 
     get '/slack/history'
-    assert_equal(['1 + 2'], JSON.parse(response.body))
+    assert_equal(current_history + ['1 + 2'], JSON.parse(response.body))
   end
 end
