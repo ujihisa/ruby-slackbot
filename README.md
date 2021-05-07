@@ -5,7 +5,7 @@
 Use docker-compose run "ruby-slackbot" for develop.
 
 ```
-docker-compose -d ruby-slackbot yaichi
+docker-compose up -d yaichi && docker-compose up --build ruby-slackbot
 ```
 
 Open http://localhost in your browser
