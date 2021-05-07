@@ -1,12 +1,12 @@
 steps:
-- name: 'gcr.io/kaniko-project/executor:latest'
+- name: 'gcr.io/kaniko-project/executor'
   args:
-  - --destination=gcr.io/$PROJECT_ID/$REPO_NAME:latest
+  - --destination=gcr.io/$PROJECT_ID/$REPO_NAME
   - --cache=true
   - --cache-ttl=48h # default 2 weeks
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:latest', '.']
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME', '.']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/$REPO_NAME:latest']
+  args: ['push', 'gcr.io/$PROJECT_ID/$REPO_NAME']
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
-  args: ['gcloud', 'run', 'services', 'update', 'ruby-slackbot', '--platform=managed', '--image=gcr.io/$PROJECT_ID/$REPO_NAME:latest', '--region=us-central1', '--quiet']
+  args: ['gcloud', 'run', 'services', 'update', 'ruby-slackbot', '--platform=managed', '--image=gcr.io/$PROJECT_ID/$REPO_NAME', '--region=us-central1', '--quiet']
