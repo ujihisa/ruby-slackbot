@@ -34,7 +34,7 @@ COPY *.js Rakefile ./
 COPY config/ config/
 COPY app/assets/ app/assets/
 COPY app/javascript/ app/javascript/
-RUN env SECRET_KEY_BASE=`bin/rake secret` bin/rake assets:precompile
+RUN env SECRET_KEY_BASE=`bin/rake secret` bin/rake assets:precompile -sq
 
 COPY . $APP_HOME/
 RUN echo "${COMMIT_SHA}" > ./VERSION && cat ./VERSION
