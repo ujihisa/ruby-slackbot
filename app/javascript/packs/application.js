@@ -17,4 +17,18 @@ require("bootstrap")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import 'bootstrap'
 import 'css/site'
+
+window.addEventListener("load", () => {
+  const links = document.querySelectorAll(
+    "a[data-loading-spinner]"
+  )
+
+  links.forEach((element) => {
+    element.addEventListener("click", (event) => {
+      event.preventDefault()
+      element.innerHTML = `${element.innerHTML} ${element.innerHTML}`
+    })
+  })
+})
