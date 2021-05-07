@@ -61,12 +61,12 @@ class SlackController < ActionController::API
           @@binding ||= binding()
           result =
             begin
-              result = @@binding.eval(text)
+              result = @@binding.eval(text, __FILE__)
               @@history ||= []
               @@history << text
               result
-            rescue => e
-              e
+            rescue Exception => e
+              "ERROR: #{text.inspect} failed to evaluate.\n```#{e.class}: #{e.message}\n#{e.backtrace.join("\n")}```"
             end
           formatted_result =
             case result
