@@ -37,6 +37,6 @@ COPY app/javascript/ app/javascript/
 RUN env SECRET_KEY_BASE=`bin/rake secret` bin/rake assets:precompile
 
 COPY . $APP_HOME/
-RUN echo "$(git rev-parse --short HEAD)" > ./VERSION
+RUN echo "${COMMIT_SHA}" > ./VERSION && cat ./VERSION
 
 CMD ["bin/rails", "server", "-b", "0.0.0.0"]
