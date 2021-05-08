@@ -46,7 +46,7 @@ class SlackController < ActionController::API
           formatted_result =
             case result
             when Exception
-              "ERROR: #{text.inspect} failed to evaluate.\n```#{e.class}: #{e.message}\n#{e.backtrace.join("\n")}```"
+              "ERROR: #{text.inspect} failed to evaluate.\n```#{e.class}: #{e.message}```"
             else
               result.inspect
             end
