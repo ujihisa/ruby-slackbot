@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>FakeSlack#get</h1>
+
+  <%= form_with do |form| %>
+    <%= form.label :body, 'body' %>
+    <%= form.text_field :body %>
+    <%= form.submit %>
+  <% end %>
+  <div>
+  <% if flash[:reply] %>
+    <%= flash[:reply] %>
+  <% else %>
+      (no reply)
+  <% end %>
+  </div>
+</div>
