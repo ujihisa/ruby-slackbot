@@ -14,7 +14,7 @@ class ShuffledQueue
     @xs = @orig_xs.shuffle
   end
 
-  def inspect
+  def self.inspect
     <<~EOS
     Use this like
       @sq = ShuffledQueue.new(%w[ruby vim].product(%w[clojure scala]))
@@ -26,4 +26,3 @@ class ShuffledQueue
     EOS
   end
 end
-
