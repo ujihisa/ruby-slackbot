@@ -36,7 +36,7 @@ class SlackController < ActionController::API
           @@binding ||= binding()
           result =
             begin
-              result = @@binding.eval(text, __FILE__)
+              result = @@binding.eval(text)
               @@history ||= []
               @@history << text
               result
