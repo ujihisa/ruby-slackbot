@@ -39,4 +39,7 @@ RUN env SECRET_KEY_BASE=`bin/rake secret` bin/rake assets:precompile -sq
 COPY . $APP_HOME/
 RUN echo "${COMMIT_SHA}" > ./VERSION && cat ./VERSION
 
-CMD ["bin/rails", "server", "-b", "0.0.0.0"]
+# tmp/pids/server.pid is just for docker-compose
+CMD \
+      rm -f tmp/pids/server.pid &&\
+      bundle exec bin/rails server --binding 0.0.0.0
