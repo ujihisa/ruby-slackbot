@@ -1,12 +1,19 @@
 steps:
-- name: 'gcr.io/kaniko-project/executor'
-  args:
-  - --destination=gcr.io/$PROJECT_ID/$REPO_NAME
-  - --cache=true
-  - --cache-ttl=48h # default 2 weeks
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME', '.']
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA', '.']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/$REPO_NAME']
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
-  args: ['gcloud', 'run', 'services', 'update', 'ruby-slackbot', '--platform=managed', '--image=gcr.io/$PROJECT_ID/$REPO_NAME', '--region=us-central1', '--quiet']
+  args: ['push', 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA']
+# - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+#   entrypoint: gcloud
+#   args:
+#   - 'run'
+#   - 'deploy'
+#   - '$REPO_NAME'
+#   - '--image'
+#   - 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA'
+#   - '--region'
+#   - 'REGION'
+#   - '--platform'
+#   - 'managed'
+images:
+- 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA'
