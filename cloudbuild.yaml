@@ -4,9 +4,6 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA']
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: '/bin/bash'
-  args: ['-c', 'env']
-- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
   args:
   - 'run'
