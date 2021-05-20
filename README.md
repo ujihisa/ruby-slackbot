@@ -27,6 +27,14 @@ docker push gcr.io/devs-sandbox/ruby-slackbot:55312fcc7b4be42e08d9ef52966224663a
 gcloud run deploy ruby-slackbot --image gcr.io/devs-sandbox/ruby-slackbot:55312fcc7b4be42e08d9ef52966224663aad3207 --region us-central1 --platform managed --allow-unauthenticated
 ```
 
+## See logs
+
+gcloud command line option seems to be crazy
+
+```
+gcloud logging read "resource.type=cloud_run_revision AND resource.labels.service_name=$(basename `pwd`)" --project devs-sandbox --limit 10 --format 'value(receiveTimestamp, textPayload)'
+```
+
 ## Licence
 
 Copyright Tatsuhiro Ujihisa
