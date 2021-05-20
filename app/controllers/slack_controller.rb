@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SlackController < ActionController::API
+  BINDING = binding()
+
   def initialize
     super
     @recent_processed_messages = Set.new
@@ -33,10 +35,9 @@ class SlackController < ActionController::API
           render json: { ok: true }
         in text
           text = CGI.unescapeHTML(text.to_s)
-          @@binding ||= binding()
           result =
             begin
-              result = @@binding.eval(text)
+              result = BINDING.eval(text)
               @@history ||= []
               @@history << text
               result
