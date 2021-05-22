@@ -22,9 +22,9 @@ Replace the tag with the current sha1.
 Use this only when you need to test the deployment itself.
 
 ```
-docker build -t "gcr.io/devs-sandbox/ruby-slackbot:$(git rev-parse HEAD)" .
-docker push "gcr.io/devs-sandbox/ruby-slackbot:$(git rev-parse HEAD)"
-gcloud run deploy ruby-slackbot --image "gcr.io/devs-sandbox/ruby-slackbot:$(git rev-parse HEAD)" --region us-central1 --platform managed --allow-unauthenticated
+docker build -t "gcr.io/devs-sandbox/ruby-slackbot:latest" .
+docker push "gcr.io/devs-sandbox/ruby-slackbot:latest"
+gcloud run deploy ruby-slackbot --image "gcr.io/devs-sandbox/ruby-slackbot:latest" --region us-central1 --platform managed --allow-unauthenticated
 ```
 
 ## See logs
