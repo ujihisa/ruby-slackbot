@@ -31,7 +31,7 @@ gcloud run deploy ruby-slackbot --image "gcr.io/devs-sandbox/ruby-slackbot:lates
 
 gcloud command line option seems to be crazy
 
-```
+```sh
 gcloud logging read "resource.type=cloud_run_revision AND resource.labels.service_name=$(basename `pwd`)" --project devs-sandbox --limit 10 --format 'value(receiveTimestamp, textPayload)'
 ```
 
