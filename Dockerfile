@@ -11,13 +11,15 @@ RUN \
 ENV \
       APP_HOME=/app \
       BUNDLE_PATH=/vendor/bundle/3.0.1
-RUN \
-      mkdir $APP_HOME && \
-      mkdir -p $BUNDLE_PATH
+
+RUN gem install bundler:2.2.16
+
+RUN mkdir $APP_HOME && chown ubuntu $APP_HOME
+RUN mkdir -p $BUNDLE_PATH && chown ubuntu $BUNDLE_PATH
+USER ubuntu
 
 WORKDIR $APP_HOME
 
-RUN gem install bundler:2.2.16
 COPY Gemfile Gemfile.lock ./
 RUN bundle install --quiet
 
