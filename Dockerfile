@@ -20,23 +20,23 @@ USER ubuntu
 
 WORKDIR $APP_HOME
 
-COPY Gemfile Gemfile.lock ./
+COPY --chown=ubuntu Gemfile Gemfile.lock ./
 RUN bundle install --quiet
 
-COPY package.json yarn.lock ./
+COPY --chown=ubuntu package.json yarn.lock ./
 RUN yarn install --check-files --silent
 
 EXPOSE ${PORT}
 
-COPY bin/ ./bin/
-COPY lib/ ./lib/
-COPY *.js Rakefile ./
-COPY config/ ./config/
-COPY app/assets/ ./app/assets/
-COPY app/javascript/ ./app/javascript/
+COPY --chown=ubuntu bin/ ./bin/
+COPY --chown=ubuntu lib/ ./lib/
+COPY --chown=ubuntu *.js Rakefile ./
+COPY --chown=ubuntu config/ ./config/
+COPY --chown=ubuntu app/assets/ ./app/assets/
+COPY --chown=ubuntu app/javascript/ ./app/javascript/
 RUN env SECRET_KEY_BASE=`bin/rake secret` ./bin/rake assets:precompile -sq
 
-COPY . ./
+COPY --chown=ubuntu . ./
 RUN echo "${COMMIT_SHA}" > ./VERSION && cat ./VERSION
 
 # tmp/pids/server.pid is just for docker-compose
