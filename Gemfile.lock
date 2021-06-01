@@ -78,7 +78,6 @@ GEM
     childprocess (3.0.0)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
-    date (3.1.0)
     erubi (1.10.0)
     ffi (1.15.1)
     ffi (1.15.1-x64-mingw32)
@@ -87,7 +86,6 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
-    io-wait (0.1.0)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     listen (3.5.1)
@@ -106,16 +104,9 @@ GEM
     marcel (1.0.1)
     method_source (1.0.0)
     mini_mime (1.0.3)
-    mini_portile2 (2.5.2)
-      net-ftp (~> 0.1)
+    mini_portile2 (2.5.3)
     minitest (5.14.4)
     msgpack (1.4.2)
-    net-ftp (0.1.2)
-      net-protocol
-      time
-    net-protocol (0.1.0)
-      io-wait
-      timeout
     nio4r (2.5.7)
     nokogiri (1.11.6)
       mini_portile2 (~> 2.5.0)
@@ -199,9 +190,6 @@ GEM
     sqlite3 (1.4.2)
     thor (1.1.0)
     tilt (2.0.10)
-    time (0.1.0)
-      date
-    timeout (0.1.1)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
