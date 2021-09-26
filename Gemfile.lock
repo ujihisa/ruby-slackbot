@@ -160,6 +160,7 @@ GEM
       io-console (~> 0.5)
     request_store (1.5.0)
       rack (>= 1.4)
+    rexml (3.2.5)
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -223,6 +224,7 @@ DEPENDENCIES
   lograge
   puma (~> 5.0)
   rails (= 7.0.0.alpha2)
+  rexml
   sassc-rails (~> 2.1)
   selenium-webdriver
   sqlite3 (~> 1.4)

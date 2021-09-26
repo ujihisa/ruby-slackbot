@@ -39,6 +39,11 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+
+  # for `bin/rails test`'s error
+  # /vendor/bundle/3.0.2/ruby/3.0.0/gems/bootsnap-1.9.1/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:23:in `require': cannot load such file -- rexml/document (LoadError)
+  gem 'rexml'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
