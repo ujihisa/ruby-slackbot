@@ -20,3 +20,4 @@ module RubySlackbot
     APP_STARTED_AT = Time.current
   end
 end
+STDOUT.sync = true
