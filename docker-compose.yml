@@ -11,20 +11,6 @@ services:
       - WEBPACKER_DEV_SERVER_HOST=webpacker
     volumes:
       - .:/app
-    depends_on:
-      - webpacker
-  webpacker:
-    build:
-      context: .
-    environment:
-      - NODE_ENV=development
-      - RAILS_ENV=development
-      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
-    command: ./bin/webpack-dev-server
-    volumes:
-      - .:/app
-    ports:
-      - '127.0.0.1:3035:3035'
   yaichi:
     image: mtsmfm/yaichi:1.7.0
     ports:

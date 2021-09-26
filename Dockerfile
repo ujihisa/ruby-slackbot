@@ -23,9 +23,6 @@ WORKDIR $APP_HOME
 COPY --chown=ubuntu Gemfile Gemfile.lock ./
 RUN bundle install --quiet
 
-COPY --chown=ubuntu package.json yarn.lock ./
-RUN yarn install --check-files --silent
-
 EXPOSE ${PORT}
 
 COPY --chown=ubuntu bin/ ./bin/
