@@ -8,7 +8,7 @@ gem 'rails', '= 7.0.0.alpha2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 5.5'
 gem 'importmap-rails', '>= 0.3.4'
 gem 'turbo-rails', '>= 0.7.11'
 gem 'stimulus-rails', '>= 0.4.0'

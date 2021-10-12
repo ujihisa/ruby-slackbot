@@ -121,7 +121,7 @@ GEM
     nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     public_suffix (4.0.6)
-    puma (5.5.0)
+    puma (5.5.1)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -222,7 +222,7 @@ DEPENDENCIES
   importmap-rails (>= 0.3.4)
   jbuilder (~> 2.7)
   lograge
-  puma (~> 5.0)
+  puma (~> 5.5)
   rails (= 7.0.0.alpha2)
   rexml
   sassc-rails (~> 2.1)
