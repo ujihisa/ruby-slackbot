@@ -51,3 +51,4 @@ gem 'tzinfo-data'
 gem 'lograge'
 
 gem 'sassc-rails', '~> 2.1'
+gem 'net-smtp' # for ruby 3.1.0
