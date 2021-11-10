@@ -10,7 +10,7 @@ RUN \
 
 ENV \
       APP_HOME=/app \
-      BUNDLE_PATH=/vendor/bundle/3.0.2
+      BUNDLE_PATH=/vendor/bundle/3.1.0-preview1
 
 RUN gem install bundler:2.2.16
 

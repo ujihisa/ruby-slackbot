@@ -82,8 +82,6 @@ GEM
       reline (>= 0.2.7)
     erubi (1.10.0)
     ffi (1.15.4)
-    ffi (1.15.4-x64-mingw32)
-    ffi (1.15.4-x86-mingw32)
     globalid (0.5.2)
       activesupport (>= 5.0)
     i18n (1.8.11)
@@ -115,12 +113,6 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
-      racc (~> 1.4)
-    nokogiri (1.12.5-x64-mingw32)
-      racc (~> 1.4)
-    nokogiri (1.12.5-x86-mingw32)
-      racc (~> 1.4)
-    nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     public_suffix (4.0.6)
     puma (5.5.2)
@@ -238,7 +230,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.0.2p107
+   ruby 3.1.0p-1
 
 BUNDLED WITH
-   2.2.22
+   2.3.0.dev
