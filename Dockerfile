@@ -1,5 +1,5 @@
 # FROM rubylang/ruby:3.0.2-focal
-FROM rubylang/3.1.0-preview1-focal
+FROM rubylang/ruby:3.1.0-preview1-focal
 
 RUN \
       apt-get update -qq && \
