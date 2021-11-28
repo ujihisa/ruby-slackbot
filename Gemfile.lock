@@ -112,6 +112,10 @@ GEM
     mini_portile2 (2.6.1)
     minitest (5.14.4)
     msgpack (1.4.2)
+    net-pop (0.1.1)
+      digest
+      net-protocol
+      timeout
     net-protocol (0.1.2)
       io-wait
       timeout
@@ -225,6 +229,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   lograge
+  net-pop
   net-smtp
   puma
   rails (= 7.0.0.alpha2)
