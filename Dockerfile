@@ -12,16 +12,19 @@ ENV \
       APP_HOME=/app \
       BUNDLE_PATH=/vendor/bundle/3.1.0-preview1
 
-RUN gem install bundler:2.2.16
+RUN gem install bundler:2.2.32
 
 RUN mkdir $APP_HOME && chown ubuntu $APP_HOME
 RUN mkdir -p $BUNDLE_PATH && chown ubuntu $BUNDLE_PATH
+RUN mkdir -p /usr/local/include/ruby-3.1.0/site_ruby && chown ubuntu /usr/local/include/ruby-3.1.0/site_ruby # dirty hack just for digest gem's bug
+
 USER ubuntu
 
 WORKDIR $APP_HOME
 
 COPY --chown=ubuntu Gemfile Gemfile.lock ./
-RUN bundle install --quiet
+RUN bundle config set --local path "${BUNDLE_PATH}"
+RUN bundle install
 
 EXPOSE ${PORT}
 

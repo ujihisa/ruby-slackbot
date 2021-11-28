@@ -37,3 +37,4 @@ end
 
 gem 'lograge'
 gem 'sassc-rails'
+gem 'net-smtp'
