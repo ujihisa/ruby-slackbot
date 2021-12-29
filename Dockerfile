@@ -1,5 +1,4 @@
-# FROM rubylang/ruby:3.0.2-focal
-FROM rubylang/ruby:3.1.0-preview1-focal
+FROM rubylang/ruby:3.1.0-focal
 
 RUN \
       apt-get update -qq && \
@@ -10,7 +9,7 @@ RUN \
 
 ENV \
       APP_HOME=/app \
-      BUNDLE_PATH=/vendor/bundle/3.1.0-preview1
+      BUNDLE_PATH=/vendor/bundle/3.1.0
 
 RUN gem install bundler:2.2.32
 
