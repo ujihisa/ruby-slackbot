@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails
-  revision: 7a685151bbf0563a9926211f7beac67c03daddff
+  revision: 5dbbe244b3a778a493f1b0974aa5d2e72c0b1071
   branch: 7-0-stable
   specs:
     actioncable (7.0.0)
@@ -118,7 +118,7 @@ GEM
     importmap-rails (1.0.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
-    io-console (0.5.10)
+    io-console (0.5.11)
     io-wait (0.2.1)
     irb (1.4.1)
       reline (>= 0.3.0)
