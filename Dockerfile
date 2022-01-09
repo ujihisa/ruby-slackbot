@@ -41,4 +41,4 @@ RUN echo "${COMMIT_SHA}" > ./VERSION && cat ./VERSION
 # tmp/pids/server.pid is just for docker-compose
 RUN rm -f ./tmp/pids/server.pid
 
-CMD ["bundle", "exec", "bin/rails", "server", "--binding", "0.0.0.0"]
+CMD ["bin/rails", "server", "--binding", "0.0.0.0"]
