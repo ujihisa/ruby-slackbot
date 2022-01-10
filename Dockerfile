@@ -9,7 +9,8 @@ RUN \
 
 ENV \
       APP_HOME=/app \
-      BUNDLE_PATH=/vendor/bundle/3.1.0
+      BUNDLE_PATH=/vendor/bundle/3.1.0 \
+      RUBYOPT=--yjit
 
 RUN gem install bundler:2.2.32
 
