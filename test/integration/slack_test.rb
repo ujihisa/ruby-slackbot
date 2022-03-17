@@ -5,11 +5,6 @@ class SlackTest < ActionDispatch::IntegrationTest
     get '/slack/history'
     current_history = JSON.parse(response.body)
 
-    travel_to('2022-02-27T15:14:03-08:00') do
-      p Time.new(2021, 3, 1, 0, 0, 0, 32400)
-    end
-    exit
-
     post('/slack/api', headers: { 'CONTENT_TYPE' => 'application/json' }, params: {
       'token' => 'ZZZZZZWSxiZZZ2yIvs3peJ',
       'team_id' => 'T061EG9R6',
