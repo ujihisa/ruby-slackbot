@@ -1,4 +1,4 @@
-FROM rubylang/ruby:3.1.1-focal
+FROM rubylang/ruby:3.1.2-focal
 
 RUN \
       apt-get update -qq && \
@@ -9,14 +9,14 @@ RUN \
 
 ENV \
       APP_HOME=/app \
-      BUNDLE_PATH=/vendor/bundle/3.1.1 \
+      BUNDLE_PATH=/vendor/bundle/3.1.2 \
       RUBYOPT=--yjit
 
 RUN gem install bundler:2.2.32
 
 RUN mkdir $APP_HOME && chown ubuntu $APP_HOME
 RUN mkdir -p $BUNDLE_PATH && chown ubuntu $BUNDLE_PATH
-RUN mkdir -p /usr/local/include/ruby-3.1.1/site_ruby && chown ubuntu /usr/local/include/ruby-3.1.1/site_ruby # dirty hack just for digest gem's bug
+RUN mkdir -p /usr/local/include/ruby-3.1.2/site_ruby && chown ubuntu /usr/local/include/ruby-3.1.2/site_ruby # dirty hack just for digest gem's bug
 
 USER ubuntu
 

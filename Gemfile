@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 
-ruby '3.1.1'
+ruby '3.1.2'
 
 # Avoid rails bug https://github.com/rails/rails/issues/43998
 gem 'rails', git: 'https://github.com/rails/rails', branch: '7-0-stable'
