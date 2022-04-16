@@ -68,10 +68,21 @@ class SlackController < ActionController::API
     self.class.define_method(:post_slack) do |channel, msg|
       msg = msg[...1000]
       unless Rails.env.test?
-        system(
-          'curl', '-s', '-H', "Authorization: Bearer #{token}",
-          '-d', "channel=#{ERB::Util.url_encode(channel)}&text=#{ERB::Util.url_encode(msg)}", 'https://slack.com/api/chat.postMessage',
-          exception: true)
+        res = HTTPClient.post(
+          'https://slack.com/api/chat.postMessage',
+          {
+            Authorization: "Bearer #{token}",
+          },
+          {
+            channel: channel,
+            text: msg,
+          },
+        )
+        if res.ok? && JSON.parse(res.content)['ok']
+          # ok
+        else
+          raise "Failed with #{res.content}"
+        end
       end
     end
     post_slack(channel, msg)
