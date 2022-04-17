@@ -70,10 +70,10 @@ class SlackController < ActionController::API
       unless Rails.env.test?
         res = HTTPClient.post(
           'https://slack.com/api/chat.postMessage',
-          {
+          header: {
             Authorization: "Bearer #{token}",
           },
-          {
+          body: {
             channel: channel,
             text: msg,
           },
