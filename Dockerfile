@@ -12,7 +12,7 @@ ENV \
       BUNDLE_PATH=/vendor/bundle/3.1.2 \
       RUBYOPT=--yjit
 
-RUN gem install bundler:2.2.32
+RUN gem install bundler:2.3.7
 
 RUN mkdir $APP_HOME && chown ubuntu $APP_HOME
 RUN mkdir -p $BUNDLE_PATH && chown ubuntu $BUNDLE_PATH
