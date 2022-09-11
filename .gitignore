@@ -31,3 +31,4 @@
 /public/packs-test
 
 /config/credentials/production.key
+/vendor/bundle
