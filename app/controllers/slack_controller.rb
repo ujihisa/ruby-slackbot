@@ -40,6 +40,14 @@ class SlackController < ActionController::API
         in nil
           render json: { ok: true }
         in text
+          # フフ...
+          if /\bsample\b/ =~ text
+            formatted_result = "今週はsample()以外を使ってみようキャンペーン実施中です:fufufu:\nhttps://rurema.clear-code.com/3.2.0/method/Array/i/sample.html"
+            post_slack(channel, formatted_result)
+            render json: { ok: true, posted_to_slack: formatted_result }
+            return
+          end
+
           text = CGI.unescapeHTML(text.to_s)
           result =
             begin
