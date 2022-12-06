@@ -4,6 +4,7 @@ RUN \
       apt-get update -qq && \
       apt-get install -y curl libsqlite3-dev && \
       apt-get install -y build-essential nodejs npm && \
+      apt-get install -y golang && \
       apt-get install -y pkg-config && \
       apt-get clean && \
       rm -rf /var/lib/apt/lists/*
