@@ -179,8 +179,6 @@ GEM
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
-    sassc (2.4.0-x64-mingw32)
-      ffi (~> 1.9)
     sassc-rails (2.1.2)
       railties (>= 4.0.0)
       sassc (>= 2.0)
@@ -229,9 +227,6 @@ GEM
     zeitwerk (2.6.6)
 
 PLATFORMS
-  ruby
-  x64-mingw32
-  x86-mingw32
   x86_64-linux
 
 DEPENDENCIES
