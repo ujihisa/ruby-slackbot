@@ -36,7 +36,7 @@ class SlackController < ActionController::API
         raise "Duplicated requests: #{client_msg_id}" if @recent_processed_messages.member?(client_msg_id)
         @recent_processed_messages << client_msg_id
 
-        case req['event']['text'][/^<.*?>\s(.*)/m, 1]
+        case req['event']['text'][/^<.*?>(.*)/m, 1]
         in nil
           render json: { ok: true }
         in text
