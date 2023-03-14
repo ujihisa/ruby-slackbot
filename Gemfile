@@ -42,3 +42,5 @@ gem 'net-pop' # /vendor/bundle/3.1.0-preview1/ruby/3.1.0/gems/bootsnap-1.9.3/lib
 gem 'net-imap' # ditto
 
 gem 'httpclient'
+
+gem 'prime'
