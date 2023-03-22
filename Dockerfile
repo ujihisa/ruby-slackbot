@@ -3,7 +3,7 @@ FROM rubylang/ruby:3.2.1-focal
 RUN \
       apt-get update -qq && \
       apt-get install -y curl libsqlite3-dev && \
-      apt-get install -y build-essential nodejs npm && \
+      apt-get install -y build-essential && \
       apt-get install -y golang && \
       apt-get install -y pkg-config && \
       apt-get clean && \
