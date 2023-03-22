@@ -36,17 +36,16 @@ class SlackController < ActionController::API
         raise "Duplicated requests: #{client_msg_id}" if @recent_processed_messages.member?(client_msg_id)
         @recent_processed_messages << client_msg_id
 
-        case req['event']['text'][/^<.*?>(.*)/m, 1]
+        case req['event']['text'][/^<.*?>\s*(.*)/m, 1]
         in nil
           render json: { ok: true }
         in text
-          # フフ...
-          if /\b(send|public_send)\b/ =~ text
-            formatted_result = "今週は#{$1}()以外を使ってみようキャンペーン実施中です:fufufu:\nhttps://rurema.clear-code.com/3.2.0/method/Array/i/#{$1}.html"
-            post_slack(channel, formatted_result)
-            render json: { ok: true, posted_to_slack: formatted_result }
-            return
-          end
+          # if /\b(send|public_send)\b/ =~ text
+          #   formatted_result = "今週は#{$1}()以外を使ってみようキャンペーン実施中です:fufufu:\nhttps://rurema.clear-code.com/3.2.0/method/Array/i/#{$1}.html"
+          #   post_slack(channel, formatted_result)
+          #   render json: { ok: true, posted_to_slack: formatted_result }
+          #   return
+          # end
 
           text = CGI.unescapeHTML(text.to_s)
           result =
