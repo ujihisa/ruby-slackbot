@@ -22,6 +22,7 @@ class SlackController < ActionController::API
       case req['event']['type']
       when 'app_mention'
         Rails.logger.info("app_mention #{req.to_json}")
+        p("app_mention #{req.to_json}")
         allowed_channels = [
           'CPJDWPTJA',
           'C015ZM53B40', # ruby-ja
