@@ -18,6 +18,10 @@ module RubySlackbot
 
 
     APP_STARTED_AT = Time.current
+
+    # https://guides.rubyonrails.org/debugging_rails_applications.html
+    config.logger = Logger.new(STDOUT)
+    config.logger = Log4r::Logger.new("Application Log")
   end
 end
 STDOUT.sync = true
