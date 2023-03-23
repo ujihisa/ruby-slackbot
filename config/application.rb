@@ -21,7 +21,6 @@ module RubySlackbot
 
     # https://guides.rubyonrails.org/debugging_rails_applications.html
     config.logger = Logger.new(STDOUT)
-    config.logger = Log4r::Logger.new("Application Log")
   end
 end
 STDOUT.sync = true
