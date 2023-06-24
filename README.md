@@ -4,7 +4,7 @@
 
 Use docker-compose run "ruby-slackbot" for develop.
 
-```
+```bash
 docker-compose up -d yaichi && docker-compose up --build ruby-slackbot
 ```
 
