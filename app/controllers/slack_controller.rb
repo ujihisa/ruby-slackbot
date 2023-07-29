@@ -81,9 +81,7 @@ class SlackController < ActionController::API
     self.class.define_method(:post_slack) do |channel, msg|
       msg = msg[...1000]
       unless Rails.env.test?
-        client = HTTPClient.new
-        client.ssl_config.set_default_paths
-        res = client.post(
+        res = Faraday.post(
           'https://slack.com/api/chat.postMessage',
           header: {
             Authorization: "Bearer #{token}",

@@ -5,7 +5,7 @@ class FakeSlackController < ApplicationController
   end
 
   def post
-    r = HTTPClient.new(header: 'Content-type:application/json').post(
+    r = Faraday.new(header: 'Content-type:application/json').post(
       'http://localhost:3000/slack/api',
       {
         type: 'event_callback',
