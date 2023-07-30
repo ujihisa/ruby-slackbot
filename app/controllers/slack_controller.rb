@@ -91,7 +91,7 @@ class SlackController < ActionController::API
             text: msg,
           },
         )
-        if res.ok? && JSON.parse(res.content)['ok']
+        if res.success? && JSON.parse(res.content)['ok']
           # ok
         else
           raise "Failed with #{res.content}"
