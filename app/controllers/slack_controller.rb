@@ -81,6 +81,17 @@ class SlackController < ActionController::API
     self.class.define_method(:post_slack) do |channel, msg|
       msg = msg[...1000]
       unless Rails.env.test?
+        pp([
+          :api_api_call,
+          'https://slack.com/api/chat.postMessage',
+          header: {
+            Authorization: "Bearer #{token}",
+          },
+          body: {
+            channel: channel,
+            text: msg,
+          },
+        ])
         res = Faraday.post(
           'https://slack.com/api/chat.postMessage',
           header: {
