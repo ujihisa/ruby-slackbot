@@ -1,4 +1,4 @@
-FROM rubylang/ruby:3.2.2-focal
+FROM rubylang/ruby:3.2.2-jammy
 
 RUN \
       apt-get update -qq && \
