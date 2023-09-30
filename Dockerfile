@@ -6,6 +6,7 @@ RUN \
       apt-get install -y build-essential && \
       apt-get install -y golang && \
       apt-get install -y pkg-config && \
+      apt-get install -y libyaml-dev && \
       apt-get clean && \
       rm -rf /var/lib/apt/lists/*
 
