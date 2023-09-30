@@ -2,11 +2,11 @@ FROM rubylang/ruby:3.2.2-jammy
 
 RUN \
       apt-get update -qq && \
-      apt-get install -y curl libsqlite3-dev && \
-      apt-get install -y build-essential && \
-      apt-get install -y golang && \
-      apt-get install -y pkg-config && \
-      apt-get install -y libyaml-dev && \
+      apt-get install -yq curl libsqlite3-dev && \
+      apt-get install -yq build-essential && \
+      apt-get install -yq golang && \
+      apt-get install -yq pkg-config && \
+      apt-get install -yq libyaml-dev && \
       apt-get clean && \
       rm -rf /var/lib/apt/lists/*
 
