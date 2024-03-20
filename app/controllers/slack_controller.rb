@@ -44,13 +44,13 @@ class SlackController < ActionController::API
           if /\b(sample|send|public_send)\b/ =~ text
             if @already_tried
               @already_tried = !@already_tried
+            else
+              @already_tried = !@already_tried
               # formatted_result = "今週は#{$1}()以外を使ってみようキャンペーン実施中です:fufufu:\nhttps://rurema.clear-code.com/3.2.0/method/Array/i/#{$1}.html"
               formatted_result = ":fufufu:\nもう一度試すと、うまくいくかも?"
               post_slack(channel, formatted_result)
               render json: { ok: true, posted_to_slack: formatted_result }
               return
-            else
-              @already_tried = !@already_tried
             end
           end
 
