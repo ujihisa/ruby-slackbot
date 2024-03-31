@@ -42,7 +42,7 @@ class SlackController < ActionController::API
         in nil
           render json: { ok: true }
         in text
-          if /\b(sample|send|public_send)\b/ =~ text
+          if /\b(sample|send|public_send)\b/ =~ text && channel == 'C015ZM53B40'
             if @@already_tried
               @@already_tried = !@@already_tried
             else
