@@ -1,4 +1,4 @@
-FROM rubylang/ruby:3.3.1-jammy
+FROM rubylang/ruby:3.3.4-jammy
 
 RUN \
       apt-get update -qq && \
@@ -12,14 +12,14 @@ RUN \
 
 ENV \
       APP_HOME=/app \
-      BUNDLE_PATH=/vendor/bundle/3.3.1 \
+      BUNDLE_PATH=/vendor/bundle/3.3.4 \
       RUBYOPT=--yjit
 
 RUN gem install bundler:2.5.11
 
 RUN mkdir $APP_HOME && chown ubuntu $APP_HOME
 RUN mkdir -p $BUNDLE_PATH && chown ubuntu $BUNDLE_PATH
-RUN mkdir -p /usr/local/include/ruby-3.3.1/site_ruby && chown ubuntu /usr/local/include/ruby-3.3.1/site_ruby # dirty hack just for digest gem's bug
+RUN mkdir -p /usr/local/include/ruby-3.3.4/site_ruby && chown ubuntu /usr/local/include/ruby-3.3.4/site_ruby # dirty hack just for digest gem's bug
 
 USER ubuntu
 
