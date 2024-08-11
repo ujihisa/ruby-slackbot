@@ -1,4 +1,3 @@
-version: '3'
 services:
   ruby-slackbot:
     container_name: ruby-slackbot
