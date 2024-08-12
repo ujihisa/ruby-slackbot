@@ -1,4 +1,4 @@
-FROM rubylang/ruby:3.3.4-jammy
+FROM rubylang/ruby:3.3.4-noble
 
 RUN \
       apt-get update -qq && \
