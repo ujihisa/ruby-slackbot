@@ -32,7 +32,8 @@
 
 # [ujihisa] Yes, this is very safe just to comment out this key here, since we don't use cookies
 #           Note that I don't keep the encryption key. Just remove this file and create again from scratch. Nothing has been encrypted.
-# /config/credentials/production.key
+!/config/credentials/production.key
+!/tmp/local_secret.txt
 
 /vendor/bundle
 
