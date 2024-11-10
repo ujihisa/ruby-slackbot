@@ -30,5 +30,8 @@
 /public/packs
 /public/packs-test
 
-/config/credentials/production.key
+# [ujihisa] Yes, this is very safe just to comment out this key here, since we don't use cookies
+#           Note that I don't keep the encryption key. Just remove this file and create again from scratch. Nothing has been encrypted.
+# /config/credentials/production.key
+
 /vendor/bundle
