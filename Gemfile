@@ -28,18 +28,10 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
-
-  # for `bin/rails test`'s error
-  # /vendor/bundle/3.0.2/ruby/3.0.0/gems/bootsnap-1.9.1/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:23:in `require': cannot load such file -- rexml/document (LoadError)
-  gem 'rexml'
-
 end
 
 gem 'lograge'
 gem 'sassc-rails'
-gem 'net-smtp'
-gem 'net-pop' # /vendor/bundle/3.1.0-preview1/ruby/3.1.0/gems/bootsnap-1.9.3/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:34:in `require': cannot load such file -- net/pop (LoadError)
-gem 'net-imap' # ditto
 
 gem 'faraday'
 

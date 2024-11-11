@@ -274,13 +274,9 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   lograge
-  net-imap
-  net-pop
-  net-smtp
   prime
   puma
   rails
-  rexml
   sassc-rails
   selenium-webdriver
   sqlite3
