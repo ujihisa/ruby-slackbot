@@ -283,7 +283,7 @@ DEPENDENCIES
   rexml
   sassc-rails
   selenium-webdriver
-  sqlite3 (= 2.2.0)
+  sqlite3
   stimulus-rails
   turbo-rails
   web-console

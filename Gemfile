@@ -5,7 +5,7 @@ ruby '3.3.6'
 
 gem 'rails'
 
-gem 'sqlite3', '= 2.2.0' # I don't know why, but it's required
+gem 'sqlite3'
 gem 'puma'
 gem 'importmap-rails'
 gem 'turbo-rails'
