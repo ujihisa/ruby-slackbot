@@ -37,7 +37,6 @@ COPY --chown=ubuntu lib/ ./lib/
 COPY --chown=ubuntu *.js Rakefile ./
 COPY --chown=ubuntu config/ ./config/
 COPY --chown=ubuntu app/assets/ ./app/assets/
-COPY --chown=ubuntu app/javascript/ ./app/javascript/
 
 COPY --chown=ubuntu . ./
 RUN echo "${COMMIT_SHA}" > ./VERSION && cat ./VERSION
