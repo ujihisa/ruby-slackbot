@@ -11,8 +11,6 @@ gem 'importmap-rails'
 gem 'turbo-rails'
 gem 'stimulus-rails'
 gem 'jbuilder'
-
-# Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
 group :development, :test do
@@ -20,7 +18,6 @@ group :development, :test do
 end
 
 group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console'
 end
 
