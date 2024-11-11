@@ -36,5 +36,3 @@
 !/tmp/local_secret.txt
 
 /vendor/bundle
-
-/config/credentials/production.key
