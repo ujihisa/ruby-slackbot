@@ -27,6 +27,9 @@ module RubySlackbot
 
     # https://guides.rubyonrails.org/debugging_rails_applications.html
     config.logger = Logger.new(STDOUT)
+
+    # [ujihisa] This does not use cookies
+    config.require_master_key = false
   end
 end
 STDOUT.sync = true
