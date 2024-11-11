@@ -30,6 +30,7 @@ module RubySlackbot
 
     # [ujihisa] This does not use cookies
     config.require_master_key = false
+    config.secret_key_base = 'dummy'
   end
 end
 STDOUT.sync = true
