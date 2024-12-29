@@ -16,7 +16,7 @@ ENV \
       BUNDLE_PATH=/vendor/bundle/$RUBY_VERSION \
       RUBYOPT=--yjit
 
-RUN gem install bundler:2.5.11
+RUN gem install bundler:2.5.22
 
 RUN mkdir $APP_HOME && chown ubuntu $APP_HOME
 RUN mkdir -p $BUNDLE_PATH && chown ubuntu $BUNDLE_PATH
