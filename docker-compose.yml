@@ -10,7 +10,7 @@ services:
     volumes:
       - .:/app
   yaichi:
-    image: mtsmfm/yaichi:1.8.0
+    image: mtsmfm/yaichi:1.8.1
     ports:
       - 80:3000
     volumes:
