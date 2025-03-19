@@ -23,8 +23,8 @@ class SlackController < ActionController::API
       when 'app_mention'
         Rails.logger.info("app_mention #{req.to_json}")
         allowed_channels = [
-          'CPJDWPTJA',
-          'C015ZM53B40', # ruby-ja
+          'CPJDWPTJA', # ruby-ja
+          'C015ZM53B40',
           'C4VT738BU', # lunch-ja
           'CFSPNGYF4', # school-devs-ja
           'C50FYM9BL', # sre-ja
@@ -41,7 +41,7 @@ class SlackController < ActionController::API
         in nil
           render json: { ok: true }
         in text
-          if /\b(sample|send|public_send)\b/ =~ text && channel == 'C015ZM53B40'
+          if /\b(sample|send|public_send)\b/ =~ text && channel == 'CPJDWPTJA'
             if true
               formatted_result = "今週は#{$1}()以外を使ってみようキャンペーン実施中です:fufufu:\nhttps://rurema.clear-code.com/3.2.0/method/Array/i/#{$1}.html"
               post_slack(channel, formatted_result)
