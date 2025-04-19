@@ -42,7 +42,7 @@ class SlackController < ActionController::API
         in nil
           render json: { ok: true }
         in text
-          if /\b(sample|send|public_send)\b/ =~ text && channel == 'CPJDWPTJA'
+          if /\b(shuffle|send|public_send)\b/ =~ text && channel == 'CPJDWPTJA'
             if true
               formatted_result = "今週は#{$1}()以外を使ってみようキャンペーン実施中です:fufufu:\nhttps://rurema.clear-code.com/3.2.0/method/Array/i/#{$1}.html"
               post_slack(channel, formatted_result)
