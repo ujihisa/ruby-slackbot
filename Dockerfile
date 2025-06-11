@@ -26,7 +26,7 @@ USER ubuntu
 
 WORKDIR $APP_HOME
 
-COPY --chown=ubuntu Gemfile Gemfile.lock ./
+COPY --chown=ubuntu Gemfile Gemfile.lock .ruby-version ./
 RUN bundle config set --local path "${BUNDLE_PATH}"
 RUN bundle install
 
