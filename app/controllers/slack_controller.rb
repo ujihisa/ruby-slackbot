@@ -56,9 +56,11 @@ class SlackController < ActionController::API
             begin
               result = BINDING.eval(text)
               @@history ||= []
-              @@history << text
+              @@history << [:evaluated, text]
               result
             rescue Exception => e
+              @@history ||= []
+              @@history << [:rescued, text]
               e
             end
           formatted_result =
