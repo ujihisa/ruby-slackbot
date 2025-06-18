@@ -27,6 +27,6 @@ class SlackTest < ActionDispatch::IntegrationTest
     assert_equal('3', JSON.parse(response.body)['posted_to_slack'])
 
     get '/slack/history'
-    assert_equal(current_history + ['1 + 2'], JSON.parse(response.body))
+    assert_equal(current_history + [['evaluated', '1 + 2']], JSON.parse(response.body))
   end
 end
