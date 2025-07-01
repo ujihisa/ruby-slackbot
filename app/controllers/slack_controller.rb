@@ -55,7 +55,6 @@ class SlackController < ActionController::API
           result =
             begin
               result = BINDING.eval(text)
-              @@history ||= []
               @@history << [:evaluated, text]
               result
             rescue Exception => e
