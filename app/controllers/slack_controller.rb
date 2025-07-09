@@ -43,8 +43,8 @@ class SlackController < ActionController::API
           render json: { ok: true }
         in text
           if /\b(sample|shuffle|send|public_send)\b/ =~ text && channel == 'CPJDWPTJA'
-            if false
-              formatted_result = "今週は#{$1}()以外を使ってみようキャンペーン実施中です:fufufu:\nhttps://rurema.clear-code.com/3.4/method/Array/i/#{$1}.html"
+            if true
+              formatted_result = "なんと! 今日2025-07-03限定で#{$1}()以外を使ってみようキャンペーン実施中です:fufufu:\nhttps://rurema.clear-code.com/3.4/method/Array/i/#{$1}.html"
               post_slack(channel, formatted_result)
               render json: { ok: true, posted_to_slack: formatted_result }
               return
