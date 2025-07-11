@@ -3,12 +3,7 @@ FROM rubylang/ruby:$RUBY_VERSION-noble
 
 RUN \
       apt-get update -qq && \
-      apt-get install -yq curl libsqlite3-dev && \
-      apt-get install -yq build-essential && \
-      apt-get install -yq golang && \
-      apt-get install -yq pkg-config && \
-      apt-get install -yq libyaml-dev && \
-      apt-get clean && \
+      apt-get install -yq curl libsqlite3-dev build-essential golang pkg-config libyaml-dev apt-get clean && \
       rm -rf /var/lib/apt/lists/*
 
 ENV \
