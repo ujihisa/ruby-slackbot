@@ -28,7 +28,6 @@ group :test do
 end
 
 gem 'lograge'
-gem 'sassc-rails'
 
 gem 'faraday'
 
