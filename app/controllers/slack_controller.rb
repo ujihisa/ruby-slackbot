@@ -58,7 +58,6 @@ class SlackController < ActionController::API
               @@history << [:evaluated, text]
               result
             rescue Exception => e
-              @@history ||= []
               @@history << [:rescued, text]
               e
             end
