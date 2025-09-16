@@ -216,7 +216,7 @@ GEM
       io-console (~> 0.5)
     request_store (1.7.0)
       rack (>= 1.4)
-    rexml (3.4.3)
+    rexml (3.4.4)
     rubyzip (2.4.1)
     securerandom (0.4.1)
     selenium-webdriver (4.10.0)
