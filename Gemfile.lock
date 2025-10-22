@@ -1,9 +1,11 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (8.0.3)
-      actionpack (= 8.0.3)
-      activesupport (= 8.0.3)
+    action_text-trix (2.1.15)
+      railties
+    actioncable (8.1.0)
+      actionpack (= 8.1.0)
+      activesupport (= 8.1.0)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
       zeitwerk (~> 2.6)
