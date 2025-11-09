@@ -3,9 +3,9 @@ GEM
   specs:
     action_text-trix (2.1.15)
       railties
-    actioncable (8.1.0)
-      actionpack (= 8.1.0)
-      activesupport (= 8.1.0)
+    actioncable (8.1.1)
+      actionpack (= 8.1.1)
+      activesupport (= 8.1.1)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
       zeitwerk (~> 2.6)
