@@ -30,6 +30,7 @@ class SlackController < ActionController::API
           'C50FYM9BL', # sre-ja
           'C044DUN1H9P', # k12-platform-enhancement-devs-ja -> k12-video-devs-ja
           'C044LCC36QH', # k12-auth-devs-ja
+          'C09K8FHBZ0E', # activity-platform-ja
         ].freeze
         channel = req['event']['channel']
         raise "Invalid channel: #{channel}" unless allowed_channels.include?(channel)
