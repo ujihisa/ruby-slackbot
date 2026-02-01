@@ -111,7 +111,7 @@ GEM
     forwardable (1.4.0)
     globalid (1.3.0)
       activesupport (>= 6.1)
-    i18n (1.14.7)
+    i18n (1.14.8)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.2.2)
       actionpack (>= 6.0.0)
