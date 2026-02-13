@@ -167,7 +167,8 @@ GEM
     prime (0.1.4)
       forwardable
       singleton
-    psych (5.2.6)
+    prism (1.7.0)
+    psych (5.3.1)
       date
       stringio
     public_suffix (6.0.2)
