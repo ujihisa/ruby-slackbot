@@ -1,4 +1,4 @@
-ARG RUBY_VERSION=3.4.6
+ARG RUBY_VERSION=3.4.8
 FROM rubylang/ruby:$RUBY_VERSION-noble
 
 RUN \
