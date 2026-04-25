@@ -169,7 +169,7 @@ GEM
     prime (0.1.4)
       forwardable
       singleton
-    prism (1.7.0)
+    prism (1.9.0)
     psych (5.3.1)
       date
       stringio
