@@ -167,7 +167,7 @@ GEM
       racc (~> 1.4)
     pp (0.6.4)
       prettyprint
-    prettyprint (0.2.0)
+    prettyprint (0.2.1)
     prime (0.1.4)
       forwardable
       singleton
